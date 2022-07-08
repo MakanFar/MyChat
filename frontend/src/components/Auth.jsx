@@ -24,29 +24,39 @@ const Auth = () => {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
 
-        const { username, password, phoneNumber, avatarURL } = form;
+    
+        try{
+            e.preventDefault();
 
-        const URL = 'http://localhost:5000/auth';
-        // const URL = 'https://medical-pager.herokuapp.com/auth';
+            const { username, password, phoneNumber, avatarURL } = form;
 
-        const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
-            username, password, fullName: form.fullName, phoneNumber, avatarURL,
-        });
+            const URL = 'http://localhost:5000/auth';
+            // const URL = 'https://medical-pager.herokuapp.com/auth';
+            
+            const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+                username, password, fullName: form.fullName, phoneNumber, avatarURL,
+            });
 
-        cookies.set('token', token);
-        cookies.set('username', username);
-        cookies.set('fullName', fullName);
-        cookies.set('userId', userId);
+            cookies.set('token', token);
+            cookies.set('username', username);
+            cookies.set('fullName', fullName);
+            cookies.set('userId', userId);
 
-        if(isSignup) {
-            cookies.set('phoneNumber', phoneNumber);
-            cookies.set('avatarURL', avatarURL);
-            cookies.set('hashedPassword', hashedPassword);
+            if(isSignup) {
+                cookies.set('phoneNumber', phoneNumber);
+                cookies.set('avatarURL', avatarURL);
+                cookies.set('hashedPassword', hashedPassword);
+                alert("You are registered.")
+            }
+
+            window.location.reload();
+
+        }catch(err){
+            console.log(err);
+            alert("Username and password does not exist.")
+
         }
-
-        window.location.reload();
     }
 
     const switchMode = () => {
