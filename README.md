@@ -1,6 +1,6 @@
 # MyChat  
 
-## 👀 Overview
+## 👀 Preview
 ![login](/screenshots/login.png)
 ![chat](/screenshots/chat.png)
 
