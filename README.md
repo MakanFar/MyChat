@@ -1,6 +1,9 @@
 # MyChat  
 
-## 👀 Preview
+## 🔗 Live Website
+[MyChat live](https://my-chat-web.netlify.app)
+
+## 👀 Overview
 ![login](/screenshots/login.png)
 ![chat](/screenshots/chat.png)
 
